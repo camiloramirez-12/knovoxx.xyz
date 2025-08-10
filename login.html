@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acceso — KnovoxxAI</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="auth-bg">
+  <main class="auth-container glass" role="main">
+    <div class="auth-tabs" role="tablist">
+      <button class="tab-btn active" data-tab="client" role="tab" aria-selected="true">Clientes</button>
+      <button class="tab-btn" data-tab="admin" role="tab" aria-selected="false">Admin</button>
+    </div>
+
+    <section id="client" class="tab active" role="tabpanel">
+      <h1>Entrar como Cliente</h1>
+      <form id="client-login" class="form-grid" autocomplete="on">
+        <input type="hidden" name="csrf" id="csrf-client">
+        <label>Email<input type="email" id="client-email" required autocomplete="username"></label>
+        <label>Contraseña
+          <input type="password" id="client-pass" required autocomplete="current-password">
+          <meter id="client-strength" min="0" max="4" low="1" high="3" optimum="4" value="0" class="pw-meter"></meter>
+        </label>
+        <label><input type="checkbox" id="client-mfa"> Usar 2FA (TOTP)</label>
+        <button class="btn btn-primary" type="submit">Entrar</button>
+        <button class="btn btn-ghost" id="forgot">Olvidé mi contraseña</button>
+      </form>
+
+      <div class="divider">¿No tienes cuenta?</div>
+      <h2>Crear cuenta</h2>
+      <form id="client-signup" class="form-grid">
+        <input type="hidden" name="csrf" id="csrf-signup">
+        <label>Nombre<input type="text" id="su-name" required></label>
+        <label>Email<input type="email" id="su-email" required></label>
+        <label>Contraseña<input type="password" id="su-pass" required minlength="8" placeholder="Mínimo 8 caracteres"></label>
+        <label>Confirmar<input type="password" id="su-pass2" required></label>
+        <label><input type="checkbox" id="su-mfa"> Activar 2FA (TOTP)</label>
+        <button class="btn btn-ghost" type="submit">Registrarme</button>
+      </form>
+      <p class="help">hash + MFA En producción, conéctalo a tu API.</p>
+    </section>
+
+    <section id="admin" class="tab" role="tabpanel">
+      <h1>Entrar como Admin</h1>
+      <form id="admin-login" class="form-grid">
+        <input type="hidden" name="csrf" id="csrf-admin">
+        <label>Email<input type="email" id="admin-email" required autocomplete="username" value="Ingresa tu correo"></label>
+        <label>Contraseña<input type="password" id="admin-pass" required autocomplete="current-password" placeholder="••••••••"></label>
+        <label><input type="checkbox" id="admin-mfa"> Usar 2FA</label>
+        <button class="btn btn-primary" type="submit">Entrar</button>
+      </form>
+      
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/auth.js"></script>
+</body>
+</html>

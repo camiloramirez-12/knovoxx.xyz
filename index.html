@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KnovoxxAI — Plataforma de IA</title>
+  <meta name="theme-color" content="#0b0f14">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header glass">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-spark"></div>
+        <span class="brand-text">Knovoxx<span>AI</span></span>
+      </div>
+      <nav class="nav">
+        <a href="#features">Funciones</a>
+        <a href="#pricing">Planes</a>
+        <a href="#security">Seguridad</a>
+        <button id="themeToggle" class="btn btn-ghost" aria-label="Cambiar tema">🌓</button>
+        <a class="btn btn-primary" href="login.html">Entrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>IA moderna, <span class="accent">rápida</span> y <span class="accent">elegante</span>.</h1>
+          <p>Playground, analítica, RBAC y PWA. Todo en un front-end listo para conectar tu backend.</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="login.html">Comenzar</a>
+            <a class="btn btn-ghost" href="#features">Ver funciones</a>
+          </div>
+          <div class="trust-badges">
+            <span>⚡ Latencia ultra baja</span>
+            <span>🔒 MFA/2FA</span>
+            <span>📦 PWA offline</span>
+            <span>🪵 Auditoría</span>
+          </div>
+        </div>
+        <div class="hero-card glass">
+          <div class="screen">
+            <div class="screen-top">
+              <div class="dots"><span></span><span></span><span></span></div>
+              <div class="screen-title">Prompt Library</div>
+            </div>
+            <div class="screen-body">
+<pre>
+// Plantilla: Resumen ejecutivo
+Objetivo: Extraer KPIs
+Formato: Bullets + tabla
+Tono: Profesional
+</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container">
+        <h2 class="section-title">Potenciado para desarrolladores</h2>
+        <div class="card-grid">
+          <article class="card glass"><h3>RBAC+</h3><p>Permisos por recurso y acción. Impersonación segura.</p></article>
+          <article class="card glass"><h3>MFA</h3><p>2FA TOTP simulado, recovery codes y bloqueo por intentos.</p></article>
+          <article class="card glass"><h3>Auditoría</h3><p>Logs exportables CSV, sesión con idle-timeout.</p></article>
+          <article class="card glass"><h3>Data Tools</h3><p>Backup/restore local, importación masiva CSV.</p></article>
+          <article class="card glass"><h3>Prompt Library</h3><p>Plantillas versiónadas y compartibles.</p></article>
+          <article class="card glass"><h3>PWA</h3><p>Instalable y offline con Service Worker.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <div class="container">
+        <h2 class="section-title">Planes</h2>
+        <div class="pricing-grid">
+          <div class="price-card glass"><h3>Starter</h3><p class="price"><span>$</span>0</p><ul><li>1 workspace</li><li>1M tokens</li><li>MFA opcional</li></ul><a class="btn btn-primary" href="login.html">Probar</a></div>
+          <div class="price-card glass featured"><h3>Pro</h3><p class="price"><span>$</span>29</p><ul><li>Multi-tenant</li><li>10M tokens</li><li>Auditoría</li></ul><a class="btn btn-primary" href="login.html">Empezar</a></div>
+          <div class="price-card glass"><h3>Enterprise</h3><p class="price">Como el cliente lo desee</p><ul><li>SSO/SAML</li><li>BYOK / VPC</li><li>SLA 24/7</li></ul><a class="btn btn-ghost" href="login.html">Contactar</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="security" class="section">
+      <div class="container">
+        <h2 class="section-title">Seguridad</h2>
+        <p>Servidor con mejores prácticas de front: hashing, CSRF token, bloqueo por fuerza bruta, MFA simulado y separación de permisos por acción. Conecta tu backend y reemplaza el provider local.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h2>Knovoxx<span>AI</span></h2>
+      <p>Inteligencia Artificial de próxima generación para potenciar tus ideas.</p>
+    </div>
+
+    <div class="footer-links">
+      <h3>Enlaces</h3>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Modelos</a></li>
+        <li><a href="#">Planes</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <h3>Contacto</h3>
+      <p>Email: <a href="mailto:contacto@knovoxx.ai">camilo.ramirez@knovoxx.xyz</a></p>
+      <p>Tel: +57 300 000 0000</p>
+    </div>
+
+    <div class="footer-social">
+      <h3>Síguenos</h3>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 KnovoxxAI — Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+</body>
+</html>

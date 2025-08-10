@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin — KnovoxxAI Pro</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="dash-body">
+  <aside class="sidebar glass">
+    <div class="brand small">
+      <div class="logo-spark"></div>
+      <span class="brand-text">Knovoxx<span>AI</span></span>
+    </div>
+    <nav class="side-nav">
+      <button class="navlink active" data-view="overview">Resumen</button>
+      <button class="navlink" data-view="users">Usuarios</button>
+      <button class="navlink" data-view="models">Modelos</button>
+      <button class="navlink" data-view="prompts">Prompts</button>
+      <button class="navlink" data-view="plans">Planes</button>
+      <button class="navlink" data-view="security">Seguridad</button>
+      <button class="navlink" data-view="logs">Logs</button>
+      <button class="navlink" data-view="settings">Ajustes</button>
+    </nav>
+    <div class="side-bottom">
+      <button id="impersonate" class="btn btn-ghost small">Impersonar</button>
+      <button id="logout" class="btn btn-ghost small">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="dashboard">
+    <header class="dash-header">
+      <h1 id="view-title">Resumen</h1>
+      <div class="user-chip" id="adminChip">admin</div>
+    </header>
+
+    <section id="view-overview" class="view active">
+      <div class="grid-3">
+        <div class="stat glass"><h3>Usuarios</h3><div class="stat-value" id="stat-users">0</div></div>
+        <div class="stat glass"><h3>Tokens usados</h3><div class="stat-value" id="stat-tokens">0</div></div>
+        <div class="stat glass"><h3>Facturación</h3><div class="stat-value" id="stat-billing">$0</div></div>
+      </div>
+      <div class="panel glass">
+        <h3>Actividades recientes</h3>
+        <ul id="recent-logs" class="log-list"></ul>
+      </div>
+      <div class="panel glass">
+        <h3>Uso (gráfico)</h3>
+        <canvas id="usageChart" width="900" height="220" aria-label="Grafico de uso" role="img"></canvas>
+      </div>
+    </section>
+
+    <section id="view-users" class="view">
+      <div class="panel glass">
+        <div class="panel-head">
+          <h3>Usuarios</h3>
+          <div class="actions">
+            <input type="search" id="user-search" placeholder="Buscar…">
+            <input type="file" id="import-users" accept=".csv" style="display:none">
+            <button id="btn-import" class="btn btn-ghost">Importar CSV</button>
+            <button id="export-users" class="btn btn-ghost">Exportar JSON</button>
+            <button id="backup" class="btn btn-ghost">Backup</button>
+            <button id="restore" class="btn btn-ghost">Restore</button>
+          </div>
+        </div>
+        <table class="table" id="users-table">
+          <thead><tr><th>Nombre</th><th>Email</th><th>Plan</th><th>Activo</th><th>MFA</th><th>Acciones</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <form id="create-user" class="form-row">
+          <input type="text" id="cu-name" placeholder="Nombre" required>
+          <input type="email" id="cu-email" placeholder="Email" required>
+          <input type="password" id="cu-pass" placeholder="Contraseña" required>
+          <select id="cu-plan"><option>Starter</option><option>Pro</option><option>Enterprise</option></select>
+          <label class="row"><input type="checkbox" id="cu-mfa"> MFA</label>
+          <button class="btn btn-primary" type="submit">Crear</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="view-models" class="view">
+      <div class="panel glass">
+        <div class="panel-head"><h3>Modelos</h3><button id="new-model" class="btn btn-primary">Nuevo Modelo</button></div>
+        <table class="table" id="models-table">
+          <thead><tr><th>Nombre</th><th>Tipo</th><th>Temperatura</th><th>Estado</th><th>Acciones</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="view-prompts" class="view">
+      <div class="panel glass">
+        <div class="panel-head"><h3>Biblioteca de Prompts</h3><button id="new-prompt" class="btn btn-primary">Nuevo</button></div>
+        <table class="table" id="prompts-table">
+          <thead><tr><th>Nombre</th><th>Versión</th><th>Etiquetas</th><th>Acciones</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="view-plans" class="view">
+      <div class="panel glass">
+        <h3>Planes</h3>
+        <table class="table" id="plans-table">
+          <thead><tr><th>Plan</th><th>Precio</th><th>Tokens/mes</th><th>Acciones</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <form id="create-plan" class="form-row">
+          <input type="text" id="pl-name" placeholder="Nombre plan" required>
+          <input type="number" id="pl-price" placeholder="Precio" required>
+          <input type="number" id="pl-tokens" placeholder="Tokens/mes" required>
+          <button class="btn btn-primary" type="submit">Agregar</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="view-security" class="view">
+      <div class="panel glass">
+        <h3>Seguridad</h3>
+        <ul class="log-list" id="sec-list"></ul>
+      </div>
+    </section>
+
+    <section id="view-logs" class="view">
+      <div class="panel glass">
+        <div class="panel-head">
+          <h3>Logs</h3>
+          <button id="export-logs" class="btn btn-ghost">Exportar CSV</button>
+        </div>
+        <ul id="logs-list" class="log-list"></ul>
+      </div>
+    </section>
+
+    <section id="view-settings" class="view">
+      <div class="panel glass">
+        <h3>Ajustes</h3>
+        <form id="admin-settings" class="form-grid">
+          <label>Admin email<input type="email" id="set-admin-email" required></label>
+          <label>Admin contraseña<input type="password" id="set-admin-pass" required></label>
+          <label>Idle timeout (min)<input type="number" id="set-idle" min="1" value="20"></label>
+          <button class="btn btn-primary" type="submit">Guardar</button>
+        </form>
+        <div class="danger-zone">
+          <h4>Zona de riesgo</h4>
+          <button id="wipe" class="btn danger">Borrar datos locales</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/admin.js"></script>
+</body>
+</html>
